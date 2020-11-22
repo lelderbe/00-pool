@@ -1,72 +1,64 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   ft_print_combn.c                                   :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: lelderbe <marvin@42.fr>                    +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/09/10 22:04:01 by lelderbe          #+#    #+#             */
-/*   Updated: 2020/09/10 22:51:53 by lelderbe         ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
-
 #include <unistd.h>
 
-int	ft_print(int value, int size)
+void	ft_putchar(char c)
 {
+	write(1, &c, 1);
+}
 
-
-
-	if (value == 0 && size == 1)
+void	print_comb(int nbr, int n, int delimiter)
+{
+	if (delimiter)
 	{
-		return 0;
+		ft_putchar(',');
+		ft_putchar(' ');
 	}
-	else
+	if (nbr / 10)
 	{
-		write(1, value, 1);
-		return value;
+		print_comb(nbr / 10, n - 1, 0);
 	}
-
-	if (size == 1)
+	else if (n - 1)
 	{
-
-		if (value == 0) {
-			write(1, 0, 1);
-		} 
+		ft_putchar('0');
 	}
+	ft_putchar('0' + (nbr % 10));
+}
 
-	if (ft_print(value / 10, size - 1) != -1) {
-		
+int		check_comb(int nbr, int n)
+{
+	while (nbr / 10)
+	{
+		if (nbr % 10 <= (nbr / 10) % 10)
+			return (0);
+		nbr = nbr / 10;
+		n--;
 	}
+	if (n > 2)
+		return (0);
+	return (1);
 }
 
 void	ft_print_combn(int n)
 {
+	int i;
+	int max;
+	int delimiter;
 
-	
-
-
-
-	char arr[n];
-	int count;
-
-	count = 0;
-	while (count < n)
+	delimiter = 0;
+	max = 1;
+	i = 0;
+	while (i < n)
 	{
-		arr[coint] = '0';
-		count++;
+		max = max * 10;
+		i++;
 	}
-
-	while (arr[0] <= '9')
+	i = 0;
+	while (i < max)
 	{
-		arr[n - 1] = arr[n - 1] + 1;
+		if (check_comb(i, n))
+		{
+			print_comb(i, n, delimiter);
+			delimiter = 1;
+		}
+		i++;
 	}
-
-	count = 0;
-	while (count < 100)
-	{
-		
-	}
-
-	
 }
