@@ -1,0 +1,5 @@
+Credentials cache: API:DB070CF4-04F5-4573-AD21-9AB7F3A23073
+        Principal: lelderbe@MSK.21-SCHOOL.RU
+
+  Issued                Expires               Principal
+Sep  8 12:37:30 2020  Sep  8 22:37:31 2020  krbtgt/MSK.21-SCHOOL.RU@MSK.21-SCHOOL.RU
